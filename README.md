@@ -87,3 +87,38 @@ Each event response also includes `reservations_count`, which reports how many c
 I chose to model the API with Django REST Framework `ModelViewSet`s and a router (`DefaultRouter`) for both `Event` and `Reservation`. This decision gives a clean RESTful structure with consistent CRUD endpoints, makes the code easier to extend, and keeps the implementation concise.
 
 Additionally, I handled seat inventory updates inside the reservation serializer and cancellation action. That keeps the business rule centralized: creating a reservation reduces available seats, and cancelling restores them. This makes the data flow predictable and avoids leaving seat counts inconsistent across the two related models.
+
+## Postman Screenshots
+
+Each screenshot below shows a Postman request or response from the API.
+
+- ![Create Event](PostmanScreenshots/create_event.png)
+  - Create a new event using the `/api/events/` endpoint.
+- ![Create Reservation](PostmanScreenshots/create_reservations.png)
+  - Reserve seats for an event through `/api/reservations/`.
+- ![Delete Event](PostmanScreenshots/delete_event_id.png)
+  - Delete an event by ID with `/api/events/{id}/`.
+- ![Get All Events](PostmanScreenshots/get_all_events.png)
+  - List every event returned by `/api/events/`.
+- ![Get All Reservations](PostmanScreenshots/get_all_reservations.png)
+  - List every reservation returned by `/api/reservations/`.
+- ![Filter Events by Venue](PostmanScreenshots/get_event_filter_venue.png)
+  - Filter events by venue name using `?venue=`.
+- ![Filter Events by Status](PostmanScreenshots/get_filter_status.png)
+  - Filter events by status using `?status=`.
+- ![Filter Reservations by Event ID](PostmanScreenshots/get_reservations_filter_eventid.png)
+  - Filter reservations by `event_id`.
+- ![Get Reservation by ID](PostmanScreenshots/get_reservations_id.png)
+  - Retrieve a specific reservation by its ID.
+- ![Middleware Request Logging](PostmanScreenshots/middleware_request_logging.png)
+  - Example request logging output from custom middleware.
+- ![Patch Event](PostmanScreenshots/patch_event_id.png)
+  - Update event fields using `PATCH /api/events/{id}/`.
+- ![Patch Reservation](PostmanScreenshots/patch_reservations_id.png)
+  - Update reservation details with `PATCH /api/reservations/{id}/`.
+- ![Cancel Reservation](PostmanScreenshots/post_reservation_cancel.png)
+  - Cancel a reservation with `POST /api/reservations/{id}/cancel/`.
+- ![Put Event](PostmanScreenshots/put_event_id.png)
+  - Replace event data using `PUT /api/events/{id}/`.
+- ![Put Reservation](PostmanScreenshots/put_reservation_id.png)
+  - Replace reservation data using `PUT /api/reservations/{id}/`.
